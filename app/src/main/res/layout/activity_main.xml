@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/symbolTextView"
-        android:layout_alignStart="@+id/infoEditText"
+        android:layout_alignLeft="@id/infoEditText"
         android:id="@+id/outputTextView1" />
 
     <TextView
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/nameTextView"
-        android:layout_alignEnd="@+id/outputTextView1"
+        android:layout_alignLeft="@id/infoEditText"
         android:id="@+id/outputTextView2" />
 
     <TextView
@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tradePriceTextView"
-        android:layout_alignStart="@+id/outputTextView2"
+        android:layout_alignLeft="@id/infoEditText"
         android:id="@+id/outputTextView3" />
 
     <TextView
@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tradeTimeTextView"
-        android:layout_alignEnd="@+id/outputTextView3"
+        android:layout_alignLeft="@id/infoEditText"
         android:id="@+id/outputTextView4" />
 
     <TextView
@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/changeTextView"
-        android:layout_alignEnd="@+id/outputTextView4"
+        android:layout_alignLeft="@id/infoEditText"
         android:id="@+id/outputTextView5" />
 
     <TextView
@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/weekTextView"
-        android:layout_alignStart="@+id/outputTextView5"
+        android:layout_alignLeft="@id/infoEditText"
         android:id="@+id/outputTextView6" />
 
     <TextView

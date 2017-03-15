@@ -20,6 +20,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView outputTextView5;
     private TextView outputTextView6;
     private String inputStr;
+    private String outputStr1;
+    private String outputStr2;
+    private String outputStr3;
+    private String outputStr4;
+    private String outputStr5;
+    private String outputStr6;
     private Stock inputStock;
 
 
@@ -40,26 +46,43 @@ public class MainActivity extends AppCompatActivity {
         getInfoButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                inputStr = infoEditText.getText().toString();
-                if(!inputStr.contains(" ")) {
+                if(infoEditText.getText().toString() != null) {
+                    inputStr = infoEditText.getText().toString();
+                }
+                if(inputStr != null && !inputStr.contains(" ") && inputStr.length() <= 4){
                     inputStock = new Stock(inputStr);
-                    //pretty sure I need a async task here. Look at later.
                     new Thread() {
                         public void run() {
                             try {
                                 inputStock.load();
-                            } catch (IOException e) {
+
+                            } catch (Exception e) {
+                            }
+                            outputStr1 = inputStock.getSymbol();
+                            outputStr2 = inputStock.getName();
+                            outputStr3 = inputStock.getLastTradePrice();
+                            outputStr4 = inputStock.getLastTradeTime();
+                            outputStr5 = inputStock.getChange();
+                            outputStr6 = inputStock.getRange();
+                            if(inputStr.length() == 0 || inputStock.getName().contains("/")){
+                                outputStr1 = "Symbol Not Found";
+                                outputStr2 = "N/A";
+                                outputStr3 = "N/A";
+                                outputStr4 = "N/A";
+                                outputStr5 = "N/A";
+                                outputStr6 = "N/A";
                             }
                         }
                     }.start();
-                    outputTextView1.setText(inputStock.getSymbol());
-                    outputTextView2.setText(inputStock.getName());
-                    outputTextView3.setText(inputStock.getLastTradePrice());
-                    outputTextView4.setText(inputStock.getLastTradeTime());
-                    outputTextView5.setText(inputStock.getChange());
-                    outputTextView6.setText(inputStock.getRange());
                 }
+                outputTextView1.setText(outputStr1);
+                outputTextView2.setText(outputStr2);
+                outputTextView3.setText(outputStr3);
+                outputTextView4.setText(outputStr4);
+                outputTextView5.setText(outputStr5);
+                outputTextView6.setText(outputStr6);
             }
+
         });
 
 
