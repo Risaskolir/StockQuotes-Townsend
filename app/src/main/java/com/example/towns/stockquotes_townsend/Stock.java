@@ -7,7 +7,7 @@ import java.io.*;
 
 public class Stock implements Serializable
 {
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = true;
 
     private static final String QUOTE_FORMAT = "&f=lcwn";
     // format for symbols: last trade (with time), change & percent change,

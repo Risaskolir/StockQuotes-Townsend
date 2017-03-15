@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView outputTextView5;
     private TextView outputTextView6;
     private String inputStr;
+    private Stock inputStock;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +41,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 inputStr = infoEditText.getText().toString();
-                Stock inputStock = new Stock(inputStr);
-                try{
-                    //make thread here, maybe outside try/catch.
-                   inputStock.load();
-                }
-                catch(IOException e){
-
+                if(!inputStr.contains(" ")) {
+                    inputStock = new Stock(inputStr);
+                    //pretty sure I need a async task here. Look at later.
+                    new Thread() {
+                        public void run() {
+                            try {
+                                inputStock.load();
+                            } catch (IOException e) {
+                            }
+                        }
+                    }.start();
+                    outputTextView1.setText(inputStock.getSymbol());
+                    outputTextView2.setText(inputStock.getName());
+                    outputTextView3.setText(inputStock.getLastTradePrice());
+                    outputTextView4.setText(inputStock.getLastTradeTime());
+                    outputTextView5.setText(inputStock.getChange());
+                    outputTextView6.setText(inputStock.getRange());
                 }
             }
         });
