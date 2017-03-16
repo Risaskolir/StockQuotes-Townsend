@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private String outputStr5;
     private String outputStr6;
     private Stock inputStock;
+    private View mainView;
 
 
     @Override
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         outputTextView5 = (TextView)findViewById(R.id.outputTextView5);
         outputTextView6 = (TextView)findViewById(R.id.outputTextView6);
         infoEditText = (EditText)findViewById(R.id.infoEditText);
+        mainView = findViewById(R.id.activity_main);
 
         getInfoButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -64,6 +66,18 @@ public class MainActivity extends AppCompatActivity {
                             outputStr4 = inputStock.getLastTradeTime();
                             outputStr5 = inputStock.getChange();
                             outputStr6 = inputStock.getRange();
+
+                            mainView.post(new Runnable(){
+                                public void run(){
+                                    outputTextView1.setText(outputStr1);
+                                    outputTextView2.setText(outputStr2);
+                                    outputTextView3.setText(outputStr3);
+                                    outputTextView4.setText(outputStr4);
+                                    outputTextView5.setText(outputStr5);
+                                    outputTextView6.setText(outputStr6);
+                                }
+                            });
+
                             if(inputStr.length() == 0 || inputStock.getName().contains("/")){
                                 outputStr1 = "Symbol Not Found";
                                 outputStr2 = "N/A";
@@ -75,12 +89,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }.start();
                 }
-                outputTextView1.setText(outputStr1);
-                outputTextView2.setText(outputStr2);
-                outputTextView3.setText(outputStr3);
-                outputTextView4.setText(outputStr4);
-                outputTextView5.setText(outputStr5);
-                outputTextView6.setText(outputStr6);
             }
 
         });
